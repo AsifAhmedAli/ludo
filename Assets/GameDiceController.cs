@@ -1,17 +1,3 @@
-/*
-http://www.cgsoso.com/forum-211-1.html
-
-CG搜搜 Unity3d 每日Unity3d插件免费更新 更有VIP资源！
-
-CGSOSO 主打游戏开发，影视设计等CG资源素材。
-
-插件如若商用，请务必官网购买！
-
-daily assets update for try.
-
-U should buy the asset from home store if u use it in your project!
-*/
-
 using System.Collections;
 using System.Collections.Generic;
 //using AssemblyCSharp;
@@ -29,7 +15,7 @@ public class GameDiceController : MonoBehaviour
     // Use this for initialization
     public bool isMyDice = false;
     public GameObject LudoController;
-  //  public LudoGameController controller;
+    public LudoGameController controller;
     public int player = 1;
     private Button button;
 
@@ -39,7 +25,7 @@ public class GameDiceController : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-    //    controller = LudoController.GetComponent<LudoGameController>();
+        controller = LudoController.GetComponent<LudoGameController>();
 
         button.interactable = false;
     }
@@ -50,14 +36,14 @@ public class GameDiceController : MonoBehaviour
         diceValueObject.GetComponent<Image>().sprite = diceValueSprites[steps - 1];
         diceValueObject.SetActive(true);
         diceAnim.SetActive(false);
-       /* controller.gUIController.restartTimer();
+       // controller.gUIController.restartTimer();
         if (isMyDice)
             controller.HighlightPawnsToMove(player, steps);
         if (GameManager.Instance.currentPlayer.isBot)
         {
             controller.HighlightPawnsToMove(player, steps);
         }
-        */
+        
     }
 
     // Update is called once per frame
@@ -113,17 +99,18 @@ public class GameDiceController : MonoBehaviour
     int bb = 0;
     public void RollDice()
     {
+        Debug.Log("Pressed");
         if (isMyDice)
         {
 
-           // controller.nextShotPossible = false;
+            controller.nextShotPossible = false;
            // controller.gUIController.PauseTimers();
             button.interactable = false;
             Debug.Log("Roll Dice");
-            arrowObject.SetActive(false);
-            // if (aa % 2 == 0) steps = 6;
-            // else steps = 2;
-            // aa++;
+           // arrowObject.SetActive(false);
+             if (aa % 2 == 0) steps = 6;
+             else steps = 2;
+             aa++;
             steps = Random.Range(1, 7);
 
             RollDiceStart(steps);
@@ -137,14 +124,14 @@ public class GameDiceController : MonoBehaviour
     public void RollDiceBot(int value)
     {
 
-        //controller.nextShotPossible = false;
-       // controller.gUIController.PauseTimers();
+        controller.nextShotPossible = false;
+      /// controller.gUIController.PauseTimers();
 
         Debug.Log("Roll Dice bot");
 
-        // if (bb % 2 == 0) steps = 6;
-        // else steps = 2;
-        // bb++;
+         if (bb % 2 == 0) steps = 6;
+         else steps = 2;
+         bb++;
 
         steps = value;
 
