@@ -511,7 +511,7 @@ public class LudoPawnController : MonoBehaviour
                     {
                         if (GameManager.Instance.currentPlayer.finishedPawns == 4)
                         {
-                            //ludoController.gUIController.FinishedGame();
+                            ludoController.gUIController.FinishedGame();
                             return;
                         }
                     }
@@ -523,7 +523,7 @@ public class LudoPawnController : MonoBehaviour
                     if (ludoController.nextShotPossible)
                     {
                         GameManager.Instance.currentPlayer.dice.GetComponent<GameDiceController>().EnableShot();
-                       // ludoController.gUIController.restartTimer();
+                        ludoController.gUIController.restartTimer();
                     }
                     else
                     {
@@ -533,7 +533,7 @@ public class LudoPawnController : MonoBehaviour
                 }
                 else
                 {
-                   // ludoController.gUIController.restartTimer();
+                    ludoController.gUIController.restartTimer();
                 }
             }
         }

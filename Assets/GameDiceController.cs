@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-//using AssemblyCSharp;
+using AssemblyCSharp;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,7 +54,7 @@ public class GameDiceController : MonoBehaviour
 
     public void EnableShot()
     {
-        /* if (GameManager.Instance.currentPlayer.isBot)
+         if (GameManager.Instance.currentPlayer.isBot)
          {
              GameManager.Instance.miniGame.BotTurn(false);
              notInteractable.SetActive(false);
@@ -76,7 +76,7 @@ public class GameDiceController : MonoBehaviour
              notInteractable.SetActive(false);
              button.interactable = true;
              arrowObject.SetActive(true);
-         }*/
+         }
     }
 
     public void DisableShot()

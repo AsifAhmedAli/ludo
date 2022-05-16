@@ -8,7 +8,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
     public GameObject[] dice;
     public GameObject GameGui;
-   // public GameGUIController gUIController;
+    public GameGUIController gUIController;
     public GameObject[] Pawns1;
     public GameObject[] Pawns2;
     public GameObject[] Pawns3;
@@ -86,7 +86,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
             else
             {
                 lastPawn.GetComponent<LudoPawnController>().MakeMove();
-                //StartCoroutine(MovePawnWithDelay(lastPawn));
+                StartCoroutine(MovePawnWithDelay(lastPawn));
             }
 
         }
@@ -118,7 +118,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
                     {
                         lastPawn.GetComponent<LudoPawnController>().pawnInJoint.GetComponent<LudoPawnController>().MakeMove();
                     }
-                    //lastPawn.GetComponent<LudoPawnController>().MakeMove();
+                    lastPawn.GetComponent<LudoPawnController>().MakeMove();
                 }
             }
             else
@@ -148,7 +148,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
             if (GameGui != null)
             {
                 Debug.Log("game controller call finish turn");
-            //    gUIController.PauseTimers();
+                gUIController.PauseTimers();
                 Invoke("sendFinishTurnWithDelay", 1.0f);
             }
         }
@@ -163,7 +163,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
     public void sendFinishTurnWithDelay()
     {
-       // gUIController.SendFinishTurn();
+        gUIController.SendFinishTurn();
     }
 
     public void Unhighlight()

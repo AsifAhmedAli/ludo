@@ -2643,7 +2643,11 @@ MonoBehaviour:
   botDiceValues: 
   botDelays: []
   needToKillOpponentToEnterHome: 0
-  playerObjects: []
+  playerObjects:
+  - {fileID: 959713299}
+  - {fileID: 1278298521}
+  - {fileID: 932625114}
+  - {fileID: 1544004529}
   currentPlayer: {fileID: 0}
   facebookAvatar: {fileID: 0}
   privateRoomID: 
@@ -16046,6 +16050,7 @@ GameObject:
   - component: {fileID: 932625111}
   - component: {fileID: 932625113}
   - component: {fileID: 932625112}
+  - component: {fileID: 932625114}
   m_Layer: 5
   m_Name: BluePlayer
   m_TagString: Untagged
@@ -16113,6 +16118,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932625110}
   m_CullTransparentMesh: 1
+--- !u!114 &932625114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932625110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2202fca0457164b4293c16f666acf81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 1175538563}
+  pawns:
+  - {fileID: 510511028}
+  - {fileID: 1065664575}
+  - {fileID: 67762997}
+  - {fileID: 708159858}
+  homeLockObjects: {fileID: 0}
+  canEnterHome: 0
+  name: 
+  avatar: {fileID: 0}
+  id: 
+  timer: {fileID: 0}
+  isActive: 0
+  AvatarObject: {fileID: 0}
+  ChatBubble: {fileID: 0}
+  ChatBubbleText: {fileID: 0}
+  ChatbubbleImage: {fileID: 0}
+  isBot: 0
+  finishedPawns: 0
 --- !u!1 &932807537
 GameObject:
   m_ObjectHideFlags: 0
@@ -16539,6 +16575,7 @@ GameObject:
   - component: {fileID: 959713296}
   - component: {fileID: 959713298}
   - component: {fileID: 959713297}
+  - component: {fileID: 959713299}
   m_Layer: 5
   m_Name: GreenPlayer
   m_TagString: Untagged
@@ -16606,6 +16643,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959713295}
   m_CullTransparentMesh: 1
+--- !u!114 &959713299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959713295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2202fca0457164b4293c16f666acf81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 1365634872}
+  pawns:
+  - {fileID: 639928548}
+  - {fileID: 902893288}
+  - {fileID: 1532899244}
+  - {fileID: 1244253465}
+  homeLockObjects: {fileID: 0}
+  canEnterHome: 0
+  name: 
+  avatar: {fileID: 0}
+  id: 
+  timer: {fileID: 0}
+  isActive: 0
+  AvatarObject: {fileID: 0}
+  ChatBubble: {fileID: 0}
+  ChatBubbleText: {fileID: 0}
+  ChatbubbleImage: {fileID: 0}
+  isBot: 0
+  finishedPawns: 0
 --- !u!1 &963734019
 GameObject:
   m_ObjectHideFlags: 0
@@ -19981,6 +20049,7 @@ MonoBehaviour:
   - {fileID: 799023140}
   - {fileID: 1365634872}
   GameGui: {fileID: 664460570}
+  gUIController: {fileID: 0}
   Pawns1:
   - {fileID: 451597334}
   - {fileID: 653379999}
@@ -23050,6 +23119,7 @@ GameObject:
   - component: {fileID: 1278298518}
   - component: {fileID: 1278298520}
   - component: {fileID: 1278298519}
+  - component: {fileID: 1278298521}
   m_Layer: 5
   m_Name: YellowPlayer
   m_TagString: Untagged
@@ -23117,6 +23187,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278298517}
   m_CullTransparentMesh: 1
+--- !u!114 &1278298521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278298517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2202fca0457164b4293c16f666acf81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 799023140}
+  pawns:
+  - {fileID: 982100356}
+  - {fileID: 1591655039}
+  - {fileID: 1351084300}
+  - {fileID: 170127618}
+  homeLockObjects: {fileID: 0}
+  canEnterHome: 0
+  name: 
+  avatar: {fileID: 0}
+  id: 
+  timer: {fileID: 0}
+  isActive: 0
+  AvatarObject: {fileID: 0}
+  ChatBubble: {fileID: 0}
+  ChatBubbleText: {fileID: 0}
+  ChatbubbleImage: {fileID: 0}
+  isBot: 0
+  finishedPawns: 0
 --- !u!1 &1285591568
 GameObject:
   m_ObjectHideFlags: 0
@@ -23302,6 +23403,78 @@ RectTransform:
   m_AnchoredPosition: {x: -192.49771, y: 2.908987}
   m_SizeDelta: {x: 62.9832, y: 61.1617}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1312195327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312195328}
+  - component: {fileID: 1312195329}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312195328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312195327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 197.38057, y: 287.83566, z: -0.63446045}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312195329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312195327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb86c8ef6194994e918775f080b0adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TIPButtonObject: {fileID: 0}
+  TIPObject: {fileID: 0}
+  firstPrizeObject: {fileID: 0}
+  SecondPrizeObject: {fileID: 0}
+  firstPrizeText: {fileID: 0}
+  secondPrizeText: {fileID: 0}
+  WinSound: {fileID: 0}
+  myTurnSource: {fileID: 0}
+  oppoTurnSource: {fileID: 0}
+  PlayersPawns: []
+  PlayersDices: []
+  HomeLockObjects: []
+  ludoBoard: {fileID: 0}
+  diceBackgrounds: []
+  playersPawnsColors: []
+  playersPawnsMultiple: []
+  GameFinishWindow: {fileID: 0}
+  ScreenShotController: {fileID: 0}
+  invitiationDialog: {fileID: 0}
+  addedFriendWindow: {fileID: 0}
+  PlayerInfoWindow: {fileID: 0}
+  ChatWindow: {fileID: 0}
+  ChatButton: {fileID: 0}
+  Players: []
+  PlayersTimers: []
+  PlayersChatBubbles: []
+  PlayersChatBubblesText: []
+  PlayersChatBubblesImage: []
+  PlayersAvatarsButton: []
 --- !u!1 &1323708907
 GameObject:
   m_ObjectHideFlags: 0
@@ -28552,6 +28725,7 @@ GameObject:
   - component: {fileID: 1544004526}
   - component: {fileID: 1544004528}
   - component: {fileID: 1544004527}
+  - component: {fileID: 1544004529}
   m_Layer: 5
   m_Name: RedPlayer
   m_TagString: Untagged
@@ -28619,6 +28793,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544004525}
   m_CullTransparentMesh: 1
+--- !u!114 &1544004529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544004525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2202fca0457164b4293c16f666acf81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 1701006319}
+  pawns:
+  - {fileID: 451597334}
+  - {fileID: 653379999}
+  - {fileID: 2098766015}
+  - {fileID: 1335267510}
+  homeLockObjects: {fileID: 0}
+  canEnterHome: 0
+  name: 
+  avatar: {fileID: 0}
+  id: 
+  timer: {fileID: 0}
+  isActive: 0
+  AvatarObject: {fileID: 0}
+  ChatBubble: {fileID: 0}
+  ChatBubbleText: {fileID: 0}
+  ChatbubbleImage: {fileID: 0}
+  isBot: 0
+  finishedPawns: 0
 --- !u!1 &1564598781
 GameObject:
   m_ObjectHideFlags: 0
