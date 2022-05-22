@@ -30,8 +30,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
         botPawns = new List<GameObject>();
 
-      //  gUIController.restartTimer();
-
+        gUIController.restartTimer();
 
         GameObject[] pawns = GameManager.Instance.currentPlayer.pawns;
 
@@ -46,7 +45,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
                 nextShotPossible = false;
                 if (GameGui != null)
                 {
-                    //gUIController.SendFinishTurn();
+                    gUIController.SendFinishTurn();
                     Invoke("sendFinishTurnWithDelay", 1.0f);
                 }
 
@@ -86,7 +85,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
             else
             {
                 lastPawn.GetComponent<LudoPawnController>().MakeMove();
-                StartCoroutine(MovePawnWithDelay(lastPawn));
+               // StartCoroutine(MovePawnWithDelay(lastPawn));
             }
 
         }
@@ -227,7 +226,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
     {
         SixStepsCount = 0;
         GameManager.Instance.diceShot = false;
-        dice[0].GetComponent<GameDiceController>().EnableShot();
+        dice[FindObjectOfType<GameGUIController>().GetCurrentPlayerIndex()].GetComponent<GameDiceController>().EnableShot();
     }
 
     void IMiniGame.setOpponentTurn()

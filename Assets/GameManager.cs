@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public GameObject backButtonMatchPlayers;
     public GameObject MatchPlayersCanvas;
     public GameObject reconnectingWindow;
-  //  public GameControllerScript gameControllerScript;
+    public GameControllerScript gameControllerScript;
   //  public FacebookManager facebookManager;
     public GameObject whiteBall;
     public bool testValue;
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
     public float linesLength = 5.0f;
     public int avatarMoveSpeed = 15;
     public bool opponentDisconnected = false;
-    //public CueController cueController;
+    public CueController cueController;
     public GameObject friendButtonMenu;
     public GameObject smallMenu;
    // public PlayFabManager playfabManager;
@@ -199,7 +199,10 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
+    private void Awake()
+    {
+        instance = this;
+    }
     public void resetTurnVariables()
     {
         stopTimer = false;

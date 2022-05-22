@@ -36,7 +36,7 @@ public class GameDiceController : MonoBehaviour
         diceValueObject.GetComponent<Image>().sprite = diceValueSprites[steps - 1];
         diceValueObject.SetActive(true);
         diceAnim.SetActive(false);
-       // controller.gUIController.restartTimer();
+        controller.gUIController.restartTimer();
         if (isMyDice)
             controller.HighlightPawnsToMove(player, steps);
         if (GameManager.Instance.currentPlayer.isBot)
@@ -76,6 +76,7 @@ public class GameDiceController : MonoBehaviour
              notInteractable.SetActive(false);
              button.interactable = true;
              arrowObject.SetActive(true);
+             isMyDice = true;
          }
     }
 
@@ -102,9 +103,8 @@ public class GameDiceController : MonoBehaviour
         Debug.Log("Pressed");
         if (isMyDice)
         {
-
             controller.nextShotPossible = false;
-           // controller.gUIController.PauseTimers();
+            controller.gUIController.PauseTimers();
             button.interactable = false;
             Debug.Log("Roll Dice");
            // arrowObject.SetActive(false);
@@ -114,10 +114,10 @@ public class GameDiceController : MonoBehaviour
             steps = Random.Range(1, 7);
 
             RollDiceStart(steps);
-           // string data = steps + ";" + controller.gUIController.GetCurrentPlayerIndex();
+            string data = steps + ";" + controller.gUIController.GetCurrentPlayerIndex();
            // PhotonNetwork.RaiseEvent((int)EnumGame.DiceRoll, data, true, null);
 
-          //  Debug.Log("Value: " + steps);
+            Debug.Log("Value: " + steps);
         }
     }
 
@@ -125,7 +125,7 @@ public class GameDiceController : MonoBehaviour
     {
 
         controller.nextShotPossible = false;
-      /// controller.gUIController.PauseTimers();
+       controller.gUIController.PauseTimers();
 
         Debug.Log("Roll Dice bot");
 

@@ -101,10 +101,10 @@ public class UpdatePlayerTimer : MonoBehaviour
 
             //showMessage("You " + StaticStrings.runOutOfTime);
 
-            /*if (!GameManager.Instance.offlineMode)
+            if (!GameManager.Instance.offlineMode)
             {
                 GameManager.Instance.cueController.setOpponentTurn();
-            }*/
+            }
 
         }
 

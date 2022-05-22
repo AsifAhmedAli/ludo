@@ -52,7 +52,7 @@ public class LudoPawnController : MonoBehaviour
         initScale = rect.localScale;
         initPosition = rect.anchoredPosition;
 
-      //  GetComponent<Button>().interactable = false;
+        GetComponent<Button>().interactable = false;
 
         if (GameManager.Instance.mode == MyGameMode.Master)
         {
@@ -205,7 +205,7 @@ public class LudoPawnController : MonoBehaviour
                 {
                     if (currentPosition + i < path.Length)
                     {
-                        Debug.Log("check count: " + path[currentPosition + i].GetComponent<LudoPathObjectController>().pawns.Count);
+                      //  Debug.Log("check count: " + path[currentPosition + i].GetComponent<LudoPathObjectController>().pawns.Count);
                         if (path[currentPosition + i].GetComponent<LudoPathObjectController>().pawns.Count > 1)
                         {
                             Debug.Log("more than 1");
@@ -226,7 +226,7 @@ public class LudoPawnController : MonoBehaviour
 
                 if ((currentPosition + steps > path.Length - 1 - 6) &&
                     GameManager.Instance.needToKillOpponentToEnterHome &&
-                !GameManager.Instance.playerObjects[playerIndex].canEnterHome)
+                    !GameManager.Instance.playerObjects[playerIndex].canEnterHome)
                 {
                     return false;
                 }
@@ -283,7 +283,8 @@ public class LudoPawnController : MonoBehaviour
             pawnInJoint.GetComponent<LudoPawnController>().GoToInitPosition(true);
             pawnInJoint = null;
         }
-        //path[currentPosition].GetComponent<LudoPathObjectController>().RemovePawn(this.gameObject);
+        Debug.Log(path[currentPosition].GetComponent<LudoPathObjectController>());
+        path[currentPosition].GetComponent<LudoPathObjectController>().RemovePawn(this.gameObject);
     }
 
     public void MoveBySteps(int steps)
@@ -295,12 +296,10 @@ public class LudoPawnController : MonoBehaviour
         RepositionPawns(controller.pawns.Count, currentPosition);
 
         rect.SetAsLastSibling();
-
-
-
-
+        Debug.Log("Move :" + steps + " Steps.");
         for (int i = 0; i < steps; i++)
         {
+          //s  Debug.Log("Steps Done = " + i);
             bool last = false;
             if (i == steps - 1) last = true;
 
@@ -311,16 +310,16 @@ public class LudoPawnController : MonoBehaviour
 
     public void MakeMove()
     {
-        Debug.Log("Make move button");
+        //Debug.Log("Make move button");
 
-      //  string data = index + ";" + ludoController.gUIController.GetCurrentPlayerIndex() + ";" + ludoController.steps;
+        string data = index + ";" + ludoController.gUIController.GetCurrentPlayerIndex() + ";" + ludoController.steps;
 
        // PhotonNetwork.RaiseEvent((int)EnumGame.PawnMove, data, true, null);
 
         if (pawnInJoint != null) ludoController.steps /= 2;
         GameManager.Instance.diceShot = true;
         myTurn = true;
-      //  ludoController.gUIController.PauseTimers();
+        ludoController.gUIController.PauseTimers();
         ludoController.Unhighlight();
 
 
@@ -335,6 +334,8 @@ public class LudoPawnController : MonoBehaviour
             {
                 pawnInJoint.GetComponent<LudoPawnController>().MoveBySteps(ludoController.steps);
             }
+
+           // Debug.Log("Dice Working");
             MoveBySteps(ludoController.steps);
         }
 
@@ -346,7 +347,7 @@ public class LudoPawnController : MonoBehaviour
         if (pawnInJoint != null) ludoController.steps /= 2;
 
         myTurn = false;
-      //  ludoController.gUIController.PauseTimers();
+        ludoController.gUIController.PauseTimers();
 
         if (!isOnBoard)
         {
@@ -363,14 +364,12 @@ public class LudoPawnController : MonoBehaviour
 
         isOnBoard = true;
     }
-
+    public static int noOfTimes = 0;
     private IEnumerator MoveDelayed(int delay, Vector2 from, Vector2 to, float time, bool last, bool playSound)
     {
-
+        noOfTimes++;
+      //  Debug.Log("Number of Times Called : " + noOfTimes);
         rect.localScale = new Vector3(initScale.x * 1.2f, initScale.y * 1.2f, initScale.z);
-
-
-
 
         yield return new WaitForSeconds(delay * singlePathSpeed);
 
@@ -547,7 +546,7 @@ public class LudoPawnController : MonoBehaviour
     private IEnumerator CheckTurnDelay()
     {
         yield return new WaitForSeconds(1.0f);
-       // ludoController.gUIController.SendFinishTurn();
+        ludoController.gUIController.SendFinishTurn();
 
     }
 
