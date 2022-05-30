@@ -200,7 +200,6 @@ public class LudoGameController : MonoBehaviour, IMiniGame
         //throw new System.NotImplementedException();
     }
 
-
     public IEnumerator movePawn(GameObject pawn, bool delay)
     {
         if (delay)
@@ -215,7 +214,6 @@ public class LudoGameController : MonoBehaviour, IMiniGame
     {
         GameManager.Instance.currentPlayer.dice.GetComponent<GameDiceController>().RollDiceBot(GameManager.Instance.botDiceValues[(botCounter + 1) % GameManager.Instance.botDelays.Count]);
     }
-
 
     void IMiniGame.CheckShot()
     {
@@ -237,11 +235,6 @@ public class LudoGameController : MonoBehaviour, IMiniGame
         Unhighlight();
     }
 
-
-
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
     void Awake()
     {
         GameManager.Instance.miniGame = this;
@@ -261,12 +254,6 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
         //gUIController = GameGui.GetComponent<GameGUIController>();
 
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 

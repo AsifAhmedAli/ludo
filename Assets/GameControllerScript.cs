@@ -1,17 +1,4 @@
-/*
-http://www.cgsoso.com/forum-211-1.html
-
-CG搜搜 Unity3d 每日Unity3d插件免费更新 更有VIP资源！
-
-CGSOSO 主打游戏开发，影视设计等CG资源素材。
-
-插件如若商用，请务必官网购买！
-
-daily assets update for try.
-
-U should buy the asset from home store if u use it in your project!
-*/
-
+using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -20,11 +7,11 @@ using AssemblyCSharp;
 public class GameControllerScript : MonoBehaviour
 {
 
-    private Image imageClock1;
-    private Image imageClock2;
+    public Image imageClock1;
+    public Image imageClock2;
 
-    private Animator messageBubble;
-    private Text messageBubbleText;
+    public Animator messageBubble;
+    public TextMeshProUGUI messageBubbleText;
 
     private int currentImage = 1;
 
@@ -48,28 +35,28 @@ public class GameControllerScript : MonoBehaviour
 
         audioSources = GetComponents<AudioSource>();
         playerTime = GameManager.Instance.playerTime;
-        imageClock1 = GameObject.Find("AvatarClock1").GetComponent<Image>();
-        imageClock2 = GameObject.Find("AvatarClock2").GetComponent<Image>();
+      //  imageClock1 = GameObject.Find("AvatarClock1").GetComponent<Image>();
+       // imageClock2 = GameObject.Find("AvatarClock2").GetComponent<Image>();
 
-        messageBubble = GameObject.Find("MessageBubble").GetComponent<Animator>();
-        messageBubbleText = GameObject.Find("BubbleText").GetComponent<Text>();
+     //   messageBubble = GameObject.Find("MessageBubble").GetComponent<Animator>();
+     //   messageBubbleText = GameObject.Find("BubbleText").GetComponent<Text>();
 
         if (GameManager.Instance.offlineMode)
         {
-            GameObject.Find("Name1").GetComponent<Text>().text = StaticStrings.offlineModePlayer1Name;
-            GameObject.Find("Name2").GetComponent<Text>().text = StaticStrings.offlineModePlayer2Name;
-            GameObject.Find("Avatar2").GetComponent<Image>().color = Color.red;
+          //  GameObject.Find("Name1").GetComponent<Text>().text = StaticStrings.offlineModePlayer1Name;
+           // GameObject.Find("Name2").GetComponent<Text>().text = StaticStrings.offlineModePlayer2Name;
+           // GameObject.Find("Avatar2").GetComponent<Image>().color = Color.red;
         }
         else
         {
-            GameObject.Find("Name1").GetComponent<Text>().text = GameManager.Instance.nameMy;
-            if (GameManager.Instance.avatarMy != null)
-                GameObject.Find("Avatar1").GetComponent<Image>().sprite = GameManager.Instance.avatarMy;
+          //  GameObject.Find("Name1").GetComponent<Text>().text = GameManager.Instance.nameMy;
+           // if (GameManager.Instance.avatarMy != null)
+            //    GameObject.Find("Avatar1").GetComponent<Image>().sprite = GameManager.Instance.avatarMy;
 
-            GameObject.Find("Name2").GetComponent<Text>().text = GameManager.Instance.nameOpponent;
+        //    GameObject.Find("Name2").GetComponent<TextMeshProUGUI>().text = GameManager.Instance.nameOpponent;
 
-            if (GameManager.Instance.avatarOpponent != null)
-                GameObject.Find("Avatar2").GetComponent<Image>().sprite = GameManager.Instance.avatarOpponent;
+          //  if (GameManager.Instance.avatarOpponent != null)
+           //     GameObject.Find("Avatar2").GetComponent<Image>().sprite = GameManager.Instance.avatarOpponent;
         }
 
 

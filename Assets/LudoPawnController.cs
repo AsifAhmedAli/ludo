@@ -165,7 +165,7 @@ public class LudoPawnController : MonoBehaviour
             if (isOnBoard)
             {
 
-                if (pawnInJoint != null)
+              /*  if (pawnInJoint != null)
                 {
                     if (steps % 2 != 0)
                         return false;
@@ -174,7 +174,7 @@ public class LudoPawnController : MonoBehaviour
                         steps = steps / 2;
                     }
                 }
-
+              */
                 if (currentPosition + steps < path.Length)
                 {
                     LudoPathObjectController pathControl = path[currentPosition + steps].GetComponent<LudoPathObjectController>();
@@ -191,10 +191,14 @@ public class LudoPawnController : MonoBehaviour
                                 Highlight(true);
                                 return true;
                             }
-                            else return false;
+                            else {
+                                Debug.Log("Return from 195");
+                                return false; 
+                            }
                         }
                         else
                         {
+                            Debug.Log("Return from 199");
                             return false;
                         }
                     }
@@ -221,6 +225,7 @@ public class LudoPawnController : MonoBehaviour
 
                 if (currentPosition == path.Length - 1 || currentPosition + steps > path.Length - 1)
                 {
+                    Debug.Log("Return from 228");
                     return false;
                 }
 
@@ -228,6 +233,7 @@ public class LudoPawnController : MonoBehaviour
                     GameManager.Instance.needToKillOpponentToEnterHome &&
                     !GameManager.Instance.playerObjects[playerIndex].canEnterHome)
                 {
+                    Debug.Log("Return from 236");
                     return false;
                 }
 
@@ -242,22 +248,23 @@ public class LudoPawnController : MonoBehaviour
     public void GoToStartPosition()
     {
         rect.SetAsLastSibling();
-        if (pawn == Pawn.Red)
+        currentPosition = 0;
+     /*   if (pawn == Pawn.Red)
         {
             currentPosition = 1;
         }
         else if (pawn == Pawn.Green)
         {
-            currentPosition = 14;
+            currentPosition = 15;
         }
         else if (pawn == Pawn.Yellow)
         {
-            currentPosition = 27;
+            currentPosition = 28;
         }
         else if (pawn == Pawn.Blue)
         {
-            currentPosition = 40;
-        }
+            currentPosition = 41;
+        }*/
         StartCoroutine(MoveDelayed(0, initPosition, path[currentPosition].anchoredPosition, MoveToStartPositionSpeed, true, true));
 
         if (pawnInJoint != null)
@@ -273,6 +280,7 @@ public class LudoPawnController : MonoBehaviour
         killedPawnSound.Play();
         rect.SetAsLastSibling();
         isOnBoard = false;
+        path[currentPosition].GetComponent<LudoPathObjectController>().RemovePawn(this.gameObject);
         currentPosition = -1;
         pawnTop.SetActive(true);
         pawnTopMultiple.SetActive(false);
@@ -283,8 +291,8 @@ public class LudoPawnController : MonoBehaviour
             pawnInJoint.GetComponent<LudoPawnController>().GoToInitPosition(true);
             pawnInJoint = null;
         }
-        Debug.Log(path[currentPosition].GetComponent<LudoPathObjectController>());
-        path[currentPosition].GetComponent<LudoPathObjectController>().RemovePawn(this.gameObject);
+       // Debug.Log(path[currentPosition].GetComponent<LudoPathObjectController>());
+        
     }
 
     public void MoveBySteps(int steps)
@@ -296,7 +304,7 @@ public class LudoPawnController : MonoBehaviour
         RepositionPawns(controller.pawns.Count, currentPosition);
 
         rect.SetAsLastSibling();
-        Debug.Log("Move :" + steps + " Steps.");
+       // Debug.Log("Move :" + steps + " Steps.");
         for (int i = 0; i < steps; i++)
         {
           //s  Debug.Log("Steps Done = " + i);
@@ -497,12 +505,12 @@ public class LudoPawnController : MonoBehaviour
                     Debug.Log("FINISHSSSS");
 
                     GameManager.Instance.currentPlayer.finishedPawns++;
-                    //ludoController.finishedPawns++;
+                    ludoController.finishedPawns++;
                     if (GameManager.Instance.mode == MyGameMode.Quick)
                     {
                         if (GameManager.Instance.currentPlayer.finishedPawns == 1)
                         {
-                            //ludoController.gUIController.FinishedGame();
+                            ludoController.gUIController.FinishedGame();
                             return;
                         }
                     }
@@ -547,6 +555,14 @@ public class LudoPawnController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         ludoController.gUIController.SendFinishTurn();
+        if(ludoController.gUIController.myIndex >= 3)
+        {
+            ludoController.gUIController.myIndex = 0;
+        }
+        else
+        {
+            ludoController.gUIController.myIndex++;
+        }
 
     }
 

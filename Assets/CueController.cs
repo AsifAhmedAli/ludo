@@ -25,14 +25,14 @@ public class CueController : MonoBehaviour
     void Start()
     {
 
-        gameControllerScript = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+        gameControllerScript = GetComponent<GameControllerScript>();
 
         if (GameManager.Instance.offlineMode)
         {
             chatButton.SetActive(false);
         }
 
-
+        
      //   if (!GameManager.Instance.offlineMode)
          //   GameManager.Instance.playfabManager.addCoinsRequest(-GameManager.Instance.payoutCoins);
 

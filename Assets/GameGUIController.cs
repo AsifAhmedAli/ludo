@@ -74,7 +74,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
     private List<string> names;
 
     [SerializeField]private List<PlayerObject> playerObjects;
-    private int myIndex;
+    public int myIndex;
     [SerializeField]private string myId;
 
 
@@ -276,6 +276,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
 
 
         int startPos = 0;
+        Debug.Log(playerObjects.Count);
         for (int i = 0; i < playerObjects.Count; i++)
         {
             /* if (playerObjects[i].id == GameManager.Instance.playfabManager.PlayFabId)
@@ -283,6 +284,13 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
                  startPos = i;
                  break;
              }*/
+         //   Debug.Log(i+": "+playerObjects[i].id);
+            if(playerObjects[i].id == "Player")
+            {
+                Debug.Log("Value of i : "+i);
+                startPos = i;
+                break;
+            }
         }
         int indexText = 0;
         bool addedMe = false;
@@ -364,7 +372,6 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
                     PlayersAvatarsButton[indexText].GetComponent<Button>().onClick.RemoveAllListeners();
                     PlayersAvatarsButton[indexText].GetComponent<Button>().onClick.AddListener(() => ButtonClick(id));
                 }
-
             }
 
 
@@ -633,7 +640,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
 #if UNITY_ANDROID
         string text = StaticStrings.ShareScreenShotText;
         text = text + " " + "https://play.google.com/store/apps/details?id=" + StaticStrings.AndroidPackageName;
-        ScreenShotController.GetComponent<NativeShare>().ShareScreenshotWithText(text);
+     //   ScreenShotController.GetComponent<NativeShare>().ShareScreenshotWithText(text);
 #elif UNITY_IOS
         string text = StaticStrings.ShareScreenShotText;
         text = text + " " + "https://itunes.apple.com/us/app/apple-store/id" + StaticStrings.ITunesAppID;
@@ -826,7 +833,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
         }
         return -1;
     }
-
+    public int numberofPlayers = 2;
     public void SendFinishTurn()
     {
         if (!FinishWindowActive && ActivePlayersInRoom > 1)
@@ -839,18 +846,17 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
             {
                 //PhotonNetwork.RaiseEvent((int)EnumPhoton.NextPlayerTurn, myIndex, true, null);
 
-                //currentPlayerIndex = (myIndex + 1) % playerObjects.Count;
+                //  currentPlayerIndex = (myIndex + 1) % playerObjects.Count;
 
-                Debug.Log("PLAYER BEFORE: " + currentPlayerIndex);
-
-                setCurrentPlayerIndex(myIndex);
+                setCurrentPlayerIndex(currentPlayerIndex++);
 
                 Debug.Log("PLAYER AFTER: " + currentPlayerIndex + " isbot: " + GameManager.Instance.currentPlayer.isBot);
 
                 SetTurn();
-                //SetOpponentTurn();
-
-                GameManager.Instance.miniGame.setOpponentTurn();
+               // SetOpponentTurn();
+            
+                
+              //  GameManager.Instance.miniGame.setOpponentTurn();
             }
         }
     }
@@ -981,8 +987,8 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
         playerObjects[currentPlayerIndex].dice.GetComponent<GameDiceController>().DisableDiceShadow();
        // Debug.Log("Player At'"+currentPlayerIndex+"' is : " + playerObjects[currentPlayerIndex]);
         GameManager.Instance.currentPlayer = playerObjects[currentPlayerIndex];
-        Debug.Log("Player Object: " + playerObjects[currentPlayerIndex].id + ", " + myId);
-        if (playerObjects[currentPlayerIndex].id == myId)
+        Debug.Log("Player Object: " + currentPlayerIndex);
+        if (!playerObjects[currentPlayerIndex].isBot)
         {
             SetMyTurn();
         }
@@ -1000,7 +1006,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
     {
         if (!FinishWindowActive)
         {
-            setCurrentPlayerIndex(currentPlayerIndex);
+            setCurrentPlayerIndex(currentPlayerIndex++);
             SetTurn();
         }
 
@@ -1025,10 +1031,10 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
         Debug.Log("Opponent turn");
         oppoTurnSource.Play();
         GameManager.Instance.isMyTurn = false;
-        /*if (playerObjects[currentPlayerIndex].id.Contains("_BOT"))
+        if (playerObjects[currentPlayerIndex].id.Contains("_BOT"))
         {
             BotTurn();
-        }*/
+        }
 
         StartTimer();
     }
