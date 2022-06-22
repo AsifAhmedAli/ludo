@@ -178,8 +178,8 @@ public class LudoPawnController : MonoBehaviour
                 if (currentPosition + steps < path.Length)
                 {
                     LudoPathObjectController pathControl = path[currentPosition + steps].GetComponent<LudoPathObjectController>();
-
-                    Debug.Log("pawns count on destination: " + pathControl.pawns.Count);
+                   // Debug.Log(path.c)
+                    Debug.Log("pawns count on destination: " + pathControl.pawns.Capacity);
                     if (pathControl.pawns.Count == 2 && pathControl.pawns[0].GetComponent<LudoPawnController>().pawnInJoint != null)
                     {
                         Debug.Log("im inside");

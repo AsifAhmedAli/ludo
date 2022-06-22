@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 //using ExitGames.Client.Photon.Chat;
 using System.Collections.Generic;
-
+using Photon.Chat;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerObject> playerObjects;
     public PlayerObject currentPlayer;
     public Sprite facebookAvatar = null;
-  //  public MyPlayerData myPlayerData = new MyPlayerData();
+    public MyPlayerData myPlayerData = new MyPlayerData();
     public string privateRoomID;
     public string[] scenes = new string[] { "GameScene", "CheckersScene", "TheMillScene", "SoccerScene" };
     public string[] gamesNames = new string[] { "GOMOKU", "CHECKERS", "THE MILL", "SOCCER" };
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     public bool playerDisconnected = false;
 
     public GameObject invitationDialog;
-    //public ChatClient chatClient;
+    public ChatClient chatClient;
 
     public int coinsCount;
     public bool roomOwner = false;
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     public CueController cueController;
     public GameObject friendButtonMenu;
     public GameObject smallMenu;
-   // public PlayFabManager playfabManager;
+    public PlayFabManager playfabManager;
     public float messageTime = 0;
 
     public int tableNumber = 0;
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
     public List<string[]> friendsStatuses = new List<string[]>();
     public int opponentCueIndex = 0;
     public int opponentCueTime = 0;
-    //public ControlAvatars controlAvatars;
+    public ControlAvatars controlAvatars;
     //public InterstitialAdsControllerScript interstitialAds;
    // public AdMobObjectController adsScript;
    // public ConnectionLostController connectionLost;
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     public bool diceShot = false;
     public string[] PlayersIDs;
     public bool gameSceneStarted = false;
-    // Game settings
+    //Game settings
 
     // 50, 100, 500, 2500, 10 000, 50 000, 100 000, 250 000, 500 000, 2 500 000, 5 000 000, 10 000 000, 15 000 000
     public int payoutCoins = 15000000;

@@ -92,8 +92,9 @@ public class UpdatePlayerTimer : MonoBehaviour
             }
             else
             {
+                Debug.Log("Its working");
                 GameManager.Instance.wasFault = true;
-              //  GameManager.Instance.cueController.setTurnOffline(true);
+                GameManager.Instance.cueController.setTurnOffline(true);
             }
 
 

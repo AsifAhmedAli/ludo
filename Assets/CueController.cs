@@ -218,6 +218,7 @@ public class CueController : MonoBehaviour
 
     public void setOpponentTurn()
     {
+        Debug.Log("Working Here");
         isServer = false;
         gameControllerScript.resetTimers(2, true);
         GameManager.Instance.miniGame.setOpponentTurn();
@@ -228,6 +229,7 @@ public class CueController : MonoBehaviour
         GameManager.Instance.myTurnDone = false;
         isServer = true;
         gameControllerScript.resetTimers(1, true);
+    
         GameManager.Instance.miniGame.setMyTurn();
     }
 
@@ -280,7 +282,7 @@ public class CueController : MonoBehaviour
 
     public void setTurnOffline(bool showTurnMessage)
     {
-
+        FindObjectOfType<GameGUIController>().SendFinishTurn();
     }
 
 

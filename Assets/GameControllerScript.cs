@@ -117,6 +117,7 @@ public class GameControllerScript : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("<color> Working<color/>");
                     GameManager.Instance.wasFault = true;
                     GameManager.Instance.cueController.setTurnOffline(true);
                 }

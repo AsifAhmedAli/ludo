@@ -191,6 +191,14 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
     void IMiniGame.BotTurn(bool first)
     {
+        if (GameManager.Instance.offlineMode)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+
+                FindObjectOfType<LudoGameController>().dice[i].GetComponent<GameDiceController>().DisableShot();
+            }
+        }
         if (first)
         {
             SixStepsCount = 0;
@@ -212,7 +220,7 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
     public void RollDiceWithDelay()
     {
-        GameManager.Instance.currentPlayer.dice.GetComponent<GameDiceController>().RollDiceBot(GameManager.Instance.botDiceValues[(botCounter + 1) % GameManager.Instance.botDelays.Count]);
+        GameManager.Instance.currentPlayer.dice.GetComponent<GameDiceController>().RollDiceBot(Random.Range(1, 7));
     }
 
     void IMiniGame.CheckShot()
@@ -222,6 +230,14 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
     void IMiniGame.setMyTurn()
     {
+        if (GameManager.Instance.offlineMode)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+
+                FindObjectOfType<LudoGameController>().dice[i].GetComponent<GameDiceController>().DisableShot();
+            }
+        }
         SixStepsCount = 0;
         GameManager.Instance.diceShot = false;
         dice[FindObjectOfType<GameGUIController>().GetCurrentPlayerIndex()].GetComponent<GameDiceController>().EnableShot();
@@ -229,9 +245,10 @@ public class LudoGameController : MonoBehaviour, IMiniGame
 
     void IMiniGame.setOpponentTurn()
     {
+        Debug.Log("<color=green>Shot Disabled </color>Working");
         SixStepsCount = 0;
         GameManager.Instance.diceShot = false;
-        dice[0].GetComponent<GameDiceController>().DisableShot();
+        dice[FindObjectOfType<GameGUIController>().GetCurrentPlayerIndex()].GetComponent<GameDiceController>().DisableShot();
         Unhighlight();
     }
 

@@ -2,16 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AssemblyCSharp;
-//using Facebook.Unity;
-//using Photon;
-//using PlayFab;
-//using PlayFab.ClientModels;
+using Facebook.Unity;
+using Photon;
+using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameGUIController : MonoBehaviour// PunBehaviour
+public class GameGUIController : PunBehaviour
 {
     //public static GameGUIController instance;
     
@@ -162,16 +162,16 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
 
         // Update player data in playfab
         Dictionary<string, string> data = new Dictionary<string, string>();
-        // data.Add(MyPlayerData.CoinsKey, (GameManager.Instance.myPlayerData.GetCoins() - GameManager.Instance.payoutCoins).ToString());
-        //  data.Add(MyPlayerData.GamesPlayedKey, (GameManager.Instance.myPlayerData.GetPlayedGamesCount() + 1).ToString());
+         data.Add(MyPlayerData.CoinsKey, (GameManager.Instance.myPlayerData.GetCoins() - GameManager.Instance.payoutCoins).ToString());
+         data.Add(MyPlayerData.GamesPlayedKey, (GameManager.Instance.myPlayerData.GetPlayedGamesCount() + 1).ToString());
 
-        // GameManager.Instance.myPlayerData.UpdateUserData(data);
+         GameManager.Instance.myPlayerData.UpdateUserData(data);
 
 
 
         currentPlayerIndex = 0;
-        //   emojiSprites = GameObject.Find("StaticGameVariablesContainer").GetComponent<StaticGameVariablesController>().emoji;
-        // myId = GameManager.Instance.playfabManager.PlayFabId;
+           emojiSprites = GameObject.Find("StaticGameVariablesContainer").GetComponent<StaticGameVariablesController>().emoji;
+         myId = GameManager.Instance.playfabManager.PlayFabId;
         playerObjects = new List<PlayerObject>();
         avatars = GameManager.Instance.opponentsAvatars;
         avatars.Insert(0, GameManager.Instance.avatarMy);
@@ -190,13 +190,13 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
             }
         }
 
-        // PlayersIDs.Insert(0, GameManager.Instance.playfabManager.PlayFabId);
+         PlayersIDs.Insert(0, GameManager.Instance.playfabManager.PlayFabId);
 
         for (int i = 0; i < PlayersIDs.Count; i++)
         {
-            //playerObjects.Add(new PlayerObject(names[i], PlayersIDs[i], avatars[i]));
+            playerObjects.Add(new PlayerObject(names[i], PlayersIDs[i], avatars[i]));
             playerObjects.Add(GameManager.Instance.playerObjects[i]);
-           // Debug.Log(playerObjects[i].name + "," + playerObjects[i]);
+            Debug.Log(playerObjects[i].name + "," + playerObjects[i]);
            
         }
 
@@ -279,11 +279,11 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
         Debug.Log(playerObjects.Count);
         for (int i = 0; i < playerObjects.Count; i++)
         {
-            /* if (playerObjects[i].id == GameManager.Instance.playfabManager.PlayFabId)
+             if (playerObjects[i].id == GameManager.Instance.playfabManager.PlayFabId)
              {
                  startPos = i;
                  break;
-             }*/
+             }
          //   Debug.Log(i+": "+playerObjects[i].id);
             if(playerObjects[i].id == "Player")
             {
@@ -497,8 +497,9 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
         else
         {
             GameManager.Instance.needToKillOpponentToEnterHome = false;
+
         }
-        //GameManager.Instance.needToKillOpponentToEnterHome = false;
+       
 
         // END LUDO
 
@@ -510,28 +511,29 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
             }
         }
 
-    //    GameManager.Instance.playerObjects = playerObjects;
+        GameManager.Instance.playerObjects = playerObjects;
 
         // Check if all players are still in room - if not deactivate
+       // if(GameManager.Instance.offlineMode)
         for (int i = 0; i < playerObjects.Count; i++)
         {
             bool contains = false;
             if (!playerObjects[i].id.Contains("_BOT"))
             {
-                /*  for (int j = 0; j < PhotonNetwork.playerList.Length; j++)
+                  for (int j = 0; j < PhotonNetwork.playerList.Length; j++)
                   {
                       if (PhotonNetwork.playerList[j].NickName.Equals(playerObjects[i].id))
                       {
                           contains = true;
                           break;
                       }
-                  }*/
+                  }
 
                 if (!contains)
                 {
                     GameManager.Instance.readyPlayersCount++;
                     Debug.Log("Ready players: " + GameManager.Instance.readyPlayersCount);
-                   // setPlayerDisconnected(i);
+                    //setPlayerDisconnected(i);
                 }
             }
         }
@@ -590,7 +592,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
         }
     }
 
-    /* public void FacebookShare()
+     public void FacebookShare()
      {
           if (PlayerPrefs.GetString("LoggedType").Equals("Facebook"))
           {
@@ -626,11 +628,11 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
               Debug.Log("ShareLink success!");
           }
       }
-      */
+      
     public void StopAndFinishGame()
     {
         StopTimers();
-        // SetFinishGame(PhotonNetwork.player.NickName, true);
+        SetFinishGame(PhotonNetwork.player.NickName, true);
         ShowGameFinishWindow();
     }
 
@@ -669,7 +671,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
                 }
             }
 
-            // GameFinishWindow.GetComponent<GameFinishWindowController>().showWindow(playersFinished, otherPlayers, firstPlacePrize, secondPlacePrize);
+             GameFinishWindow.GetComponent<GameFinishWindowController>().showWindow(playersFinished, otherPlayers, firstPlacePrize, secondPlacePrize);
         }
     }
 
@@ -689,10 +691,10 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
 
         CurrentPlayerID = id;
 
-        /*  if (playerObjects[index].AvatarObject.GetComponent<PlayerAvatarController>().Active)
+          if (playerObjects[index].AvatarObject.GetComponent<PlayerAvatarController>().Active)
           {
               PlayerInfoWindow.GetComponent<PlayerInfoController>().ShowPlayerInfo(playerObjects[index].avatar, playerObjects[index].name, playerObjects[index].data);
-          }*/
+          }
 
     }
 
@@ -976,7 +978,7 @@ public class GameGUIController : MonoBehaviour// PunBehaviour
 
     }
 
-    private void SetTurn()
+    public void SetTurn()
     {
         Debug.Log("SET TURN CALLED");
         for (int i = 0; i < playerObjects.Count; i++)
