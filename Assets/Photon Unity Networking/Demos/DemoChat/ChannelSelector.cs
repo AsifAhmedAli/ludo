@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Chat;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ public class ChannelSelector : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-      //  ChatNewGui handler = FindObjectOfType<ChatNewGui>(); TODO:
-      //  handler.ShowChannel(this.Channel);
+        ChatGui handler = FindObjectOfType<ChatGui>();
+        handler.ShowChannel(this.Channel);
     }
 }
