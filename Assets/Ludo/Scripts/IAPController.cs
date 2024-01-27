@@ -98,6 +98,7 @@ public class IAPController : MonoBehaviour, IStoreListener
 
     public void OnPurchaseClicked(int productId)
     {
+        Debug.Log("Product ID: " + productId);
         if (controller != null)
         {
             if (productId == 1)

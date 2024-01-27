@@ -40,6 +40,6 @@ public class BuyItemControl : MonoBehaviour {
     }
 
     public void buyItem() {
-      //  GameManager.Instance.IAPControl.OnPurchaseClicked(index);
+        GameManager.Instance.IAPControl.OnPurchaseClicked(index);
     }
 }
